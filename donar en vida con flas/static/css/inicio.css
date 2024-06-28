@@ -1,0 +1,412 @@
+/*Se importó una fuente tipográfica*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Consigna: Utilizar fuentes Google Fonts.Es*/
+
+*{
+    margin: 0; /*eliminar el margen*/
+    padding: 0; /*eliminar el espacio-margen interior*/
+    box-sizing: border-box; /*el tamaño del contenedor se mantiene estable*/
+    text-decoration: none; /*eliminar decoración en los textos*/
+    list-style: none;/*elimina decoración de las listas*/
+}
+
+
+body{
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+}
+img{
+    max-width: 100%;
+}
+
+/*Consigna: Poseer una estructura HTML maquetada con Flexbox y/o Grid.*/
+/*Definir las áreas*/
+body{
+    display: grid;
+    grid-template-areas:
+    "header"
+    ".presentacion"
+    "main"
+    "footer"
+    ;
+}
+
+.container:not(.presentacion, main){
+    display: grid;
+    grid-template-columns: 1fr 1fr; /*divide el contenedor en dos columnas de igual tamaño*/
+    
+    align-items: center;/*centra verticalmente*/
+    justify-content: center;/*centra horizontalmente*/
+}
+
+/*header*/
+header{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;/*(sombra parte inferior)*/
+    
+    max-width: 1200px;
+    width: 100%;
+    position: fixed;
+    background-color: #ffffff;
+}
+.header-logo img{
+    max-width: 7em;
+    vertical-align: middle; /*La imagen se ubica en el centro del contenedor*/
+    margin: 0 16px;
+}
+
+.nav-menu, .nav-barra{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.menu-hamburguesa, .nav-barra{
+    display: none;
+}
+.nav-barra{
+    color: #81B04B;
+    cursor: pointer;
+}
+.nav-barra i{
+    font-size: 30px;
+    font-weight: bold;
+    -webkit-text-stroke: 1.5px #81B04B;
+}
+
+nav ul li a{
+    color: #669933;
+    transition: all .2s ease; /*Consigna: Utilizar al menos una animación, transformación o una transición.*/
+    padding: 1em;
+}
+.nav-menu li{
+    position: relative;
+    padding: 1em 0;
+}
+.nav-menu li ul{
+    position: absolute;
+    top: 100%;
+    width: 14em;
+    background-color: #f5f5dc;
+    display: none;
+}
+.nav-menu li ul li{
+    padding: 0;
+}
+.nav-menu li ul li a{
+    text-transform: capitalize;
+    font-size: .9em;
+    color: #81B04B;
+    padding: 1.5em;
+    display: flex;
+}
+
+.nav-menu .contacto ul{
+    right: 0;
+}
+
+.nav-menu li:hover>ul{
+    display: block;
+}
+
+/*Consigna: Utilizar al menos una animación, transformación o una transición.*/
+nav ul li a:hover{
+    color: #ffffff;
+    font-style: italic;
+}
+.inicio:hover{
+    background-color: #FBDD7B;
+}
+.nosotros:hover{
+    background-color: #F0830E;
+}
+.donacion:hover{
+    background-color: #C21518;
+}
+.colaboracion:hover{
+    background-color: #81B04B;
+}
+.contacto:hover{
+    background-color: #FBDD7B;
+}
+
+.formulario_inscripcion:hover{
+    background-color: #FBDD7B;
+}
+
+.nav-menu li ul li a:hover{
+    font-weight: bold;
+    background-color: #E5C287;
+    color: #000;
+}
+
+/****/
+.inicio{
+    background-color: #FBDD7B;
+}
+.inicio a{
+    color: #ffffff;
+}
+/****/
+
+/*presentacion*/
+.presentacion, .actividades, .novedades{
+    text-align: center;
+    justify-content: center;
+}
+.presentacion{
+    margin-top: 3em;
+}
+.presentacion img{
+    width: 100%; /* La imagen ocupará todo el ancho del contenedor */
+    height: auto; /* La altura se ajustará automáticamente para mantener la relación de aspecto */
+    max-width: 100%;
+}
+h1{
+ opacity: 0;   
+}
+
+/*main*/
+.titulo{
+    margin: 10px;
+    font-size: 2.7em;
+    color: #C21518;
+    text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.5);
+}
+.titulo:hover{
+    transform: scale(1.2, 1.2)  /*Consigna: Utilizar al menos una animación, transformación o una transición.*/
+}
+
+.contenedor-actividades{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin: 1.2em;
+}
+
+.actividad{
+    flex: 1;
+    border-radius: 5%;
+    padding: 1em 3em;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.actividad-fondo1{
+    background-color: #F0830E;
+}
+.actividad-fondo2{
+    background-color: #C21518;
+}
+.actividad-fondo3{
+    background-color: #81B04B;
+}
+
+.actividad img{ 
+    width: 25%;
+}
+.actividad h3{
+    text-decoration: underline;
+    margin-bottom: 1em;
+}
+.actividad p{
+    font-size: .9em;
+    font-style: italic;
+    padding: 1em 0;
+}
+.sabermas{
+    padding: 20px;
+   
+    font-size: 1em;
+    font-weight: bold;
+    background-color: rgba(255, 253, 251, 0.253);
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 1em 3em;
+}
+.sabermas:hover{
+    background-color: #ffff; /*Consigna: Utilizar al menos una animación, transformación o una transición.*/
+    color: #000;
+    font-weight: bold;
+}
+
+/* Estilos seccion novedades - Slider de imagenes */
+.contenedor-slider{
+    width: 100%;
+    max-width: 80%;
+    height: auto;
+    margin: 20px auto 0px; 
+    overflow: hidden;    
+
+}
+
+.contenedor-slider ul{
+    display: flex;
+    padding: 0%;
+    width: 400%;
+    max-width: 800vh;
+    animation: slider 20s infinite ease-in-out; /*Consigna animacion*/
+
+}
+
+.contenedor-slider li{
+    list-style: none;
+    width: 100%;
+
+}
+
+.contenedor-slider img{
+    width: 100%;
+}
+
+@keyframes slider{ /*Animación por medio de @Keyframes*/
+    0% {margin-left: 0%;}
+    20% {margin-left: 0%;}
+
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+    75% {margin-left: -300%;}
+    95% {margin-left: -300%;}
+
+}
+
+
+/* Estilos footer */
+
+footer{
+    margin-top: 500px;
+}
+footer{
+    background-color: #C21518;
+    padding: 2em 0;
+}
+.footer-logo img{
+    max-width: 20vh;
+    vertical-align: middle;
+    margin-top: 15px;
+}
+.redes-sociales, .footer-logo{
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rrss, .rrss-iconos{
+    display: flex;
+    gap: 1.5em;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.rrss  li a, .rrss-iconos  li a{
+    color: #000;
+}
+.rrss li a{
+    font-weight: 600;
+}
+.rrss li a:hover, .rrss-iconos li a:hover{
+    color: #FBDD7B;
+
+}
+
+.rrss-iconos{
+    display: none;
+}
+
+/*Media Query: Tablet*/
+@media (max-width: 900px){
+    /*header*/
+    /*Hasta 900px la barra de navegación se transforma en menú hamburguesa*/
+    .nav-barra{
+        display: flex;
+        margin-right: 1em;
+    }
+    .nav-menu{
+        flex-direction: column;
+        align-items: end;
+        position: fixed;
+        right: 0;
+        background-color: #e9ebef;
+        display: none;
+    }
+    #nav-barra:checked ~ .nav-menu {
+        display: initial; /* Muestra el menú cuando #nav-barra está marcado */
+    }
+
+    .nav-menu li:hover>ul{
+        display: none;
+    }
+
+    /*main*/
+    .titulo{
+        font-size: 2em;
+    }
+    .contenedor-actividades{
+        flex-direction: column; /*Se modifica de flex-row a flex-direction column*/
+    }
+    .actividad p{
+        font-size: 1em; /*se modifica tamaño fuente*/
+    }
+    .actividad img{ /*Se modifica tamaño de las imagenes*/
+        width: 20%;
+    }
+
+    /*footer*/
+    .rrss{
+        display:none;
+    }
+    .rrss-iconos{
+        display: flex;
+        font-size: 1.3em;
+    }
+    .footer-logo img{
+        max-width: 15vh;
+    }
+
+}
+
+
+/*Media Query: Celular*/
+@media (max-width: 600px){
+    .container:not(header){
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media screen and (min-width: 1024px){ /*Se modifica margin de contenedor-button por alturas*/
+    .actividad3>.contenedor-button{
+        margin-top: 70px;
+    }
+
+    .actividad2>.contenedor-button{
+        margin-top: 45px;
+    }
+}
+
+@media screen and (min-width: 1440px){
+    .actividad3>.contenedor-button{
+        margin-top: 40px;}
+      
+
+    .actividad2>.contenedor-button{
+        margin-top: 25px;
+    }
+}
+
+
+
+
+
+
+
+
+

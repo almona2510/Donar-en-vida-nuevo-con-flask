@@ -1,0 +1,368 @@
+/*Se importó una fuente tipográfica*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Consigna: Utilizar fuentes Google Fonts.Es*/
+
+*{
+    margin: 0; /*eliminar el margen*/
+    padding: 0; /*eliminar el espacio-margen interior*/
+    box-sizing: border-box; /*el tamaño del contenedor se mantiene estable*/
+    text-decoration: none; /*eliminar decoración en los textos*/
+    list-style: none;/*elimina decoración de las listas*/
+}
+
+
+body{
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+}
+img{
+    max-width: 100%;
+}
+
+/*Consigna: Poseer una estructura HTML maquetada con Flexbox y/o Grid.*/
+/*Definir las áreas*/
+body{
+    display: grid;
+    grid-template-areas:
+    "header"
+    ".hero"
+    "main"
+    "footer"
+    ;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /*divide el contenedor en dos columnas de igual tamaño*/
+    
+    align-items: center;/*centra verticalmente*/
+    justify-content: center;/*centra horizontalmente*/
+}
+
+
+/*header*/
+header{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;/*(sombra parte inferior)*/
+    
+    max-width: 1200px;
+    width: 100%;
+    position: fixed;
+    background-color: #ffffff;
+}
+.header-logo img{
+    max-width: 7em;
+    vertical-align: middle; /*La imagen se ubica en el centro del contenedor*/
+    margin: 0 16px;
+}
+
+.nav-menu, .nav-barra{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.menu-hamburguesa, .nav-barra{
+    display: none;
+}
+.nav-barra{
+    color: #81B04B;
+    cursor: pointer;
+}
+.nav-barra i{
+    font-size: 30px;
+    font-weight: bold;
+    -webkit-text-stroke: 1.5px #81B04B;
+}
+
+nav ul li a{
+    color: #669933;
+    transition: all .2s ease; /*Consigna: Utilizar al menos una animación, transformación o una transición.*/
+    padding: 1em;
+}
+.nav-menu li{
+    position: relative;
+    padding: 1em 0;
+}
+.nav-menu li ul{
+    position: absolute;
+    top: 100%;
+    width: 14em;
+    background-color: #f5f5dc;
+    display: none;
+}
+.nav-menu li ul li{
+    padding: 0;
+}
+.nav-menu li ul li a{
+    text-transform: capitalize;
+    font-size: .9em;
+    color: #81B04B;
+    padding: 1.5em;
+    display: flex;
+}
+
+.nav-menu .contacto ul{
+    right: 0;
+}
+
+.nav-menu li:hover>ul{
+    display: block;
+}
+
+/*Consigna: Utilizar al menos una animación, transformación o una transición.*/
+nav ul li a:hover{
+    color: #ffffff;
+    font-style: italic;
+}
+.inicio:hover{
+    background-color: #FBDD7B; /*Hover background-color distinto para cada item de barra de navegacion*/
+}
+.nosotros:hover{
+    background-color: #F0830E;
+}
+.donacion:hover{
+    background-color: #C21518;
+}
+.colaboracion:hover{
+    background-color: #81B04B;
+}
+.contacto:hover{
+    background-color: #FBDD7B;
+}
+
+.formulario_inscripcion:hover{
+    background-color: #FBDD7B;
+}
+
+.nav-menu li ul li a:hover{
+    font-weight: bold;
+    background-color: #E5C287;
+    color: #000;
+}
+
+/****/
+.nosotros{
+    background-color: #F0830E;
+}
+.nosotros a{
+    color: #ffffff;
+}
+/****/
+
+
+/*main*/
+main{
+    margin-top: 1.5em;
+}
+
+.contenido-texto, .contenido-imagen{
+    height: 100%;
+    width: 100%;
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.contenido-imagen img{
+    /* max-width: 100%; */
+    height: auto;
+}
+
+.contenido-texto{
+    padding: 3em;
+}
+
+.imagen-historia{
+    object-fit: contain; /*object-fit contain: imagen se escala para encajar completamente dentro del contenedor*/
+}
+.imagen-historia img{
+  object-fit: cover;
+  height: 100%;
+  
+}
+
+.contenido-imagen img:hover, .card-ahijado:hover{ /*transformacion scale*/
+    transform: scale(1.2);
+    height: auto;
+}
+.contenido-texto p{
+    text-align: justify;
+    margin-top: 5%;
+    font-size: .8em;
+}
+h1, h3{
+    font-size: 2.2em;
+}
+#nuestrahistoria-titulo-2, #objetivos-titulo-2{
+    margin-top: -3%;
+}
+#nuestrahistoria-titulo-2, #objetivos-titulo-1, .objetivos-texto{
+    color: #FBDD7B;
+}
+#nuestrahistoria-titulo-1, .nuestrahistoria-texto, #objetivos-titulo-2, .section-ahijados h1{
+    color: #C21518;
+}
+
+.historia{
+    background-color: #F0830E;
+}
+.objetivos{
+    background-color: #81B04B;
+}
+
+/*ahijados*/
+.section-ahijados{
+    padding: 3em;
+    background-color: #FBDD7B;
+    text-align: center;
+}
+#contenido-ahijados{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /*Cuatro columnas iguales con grid*/
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 2em;
+}
+.card-ahijado{
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 3px;
+}
+.card-ahijado img{
+    border-radius: 1em 1em 0 0;
+}
+
+
+/* Estilos footer */
+footer{
+    background-color: #C21518;
+    padding: 2em 0;
+}
+.footer-logo img{
+    max-width: 20vh;
+    vertical-align: middle;
+    margin-top: 15px;
+}
+.redes-sociales, .footer-logo{
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rrss, .rrss-iconos{
+    display: flex;
+    gap: 1.5em;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.rrss  li a, .rrss-iconos  li a{
+    color: #000;
+}
+.rrss li a{
+    font-weight: 600;
+}
+.rrss li a:hover, .rrss-iconos li a:hover{
+    color: #FBDD7B;
+
+}
+
+.rrss-iconos{
+    display: none;
+}
+
+/*Media Query: Tablet*/
+@media (max-width: 900px){
+    /*header*/
+     /*Hasta 900px la barra de navegación se transforma en menú hamburguesa*/
+    .nav-barra{
+        display: flex;
+        margin-right: 1em;
+    }
+    .nav-menu{
+        flex-direction: column;
+        align-items: end;
+        position: fixed;
+        right: 0;
+        background-color: #e9ebef;
+        display: none;
+    }
+    #nav-barra:checked ~ .nav-menu {
+        display: initial; /* Muestra el menú cuando #nav-barra está marcado */
+    }
+
+    .nav-menu li:hover>ul{
+        display: none;
+    }
+
+    /*footer*/
+     /*A los 900px las redes sociales pasan de texto a iconos*/
+    .rrss{
+        display:none;
+    }
+    .rrss-iconos{
+        display: flex;
+        font-size: 1.3em;
+    }
+    .footer-logo img{
+        max-width: 15vh;
+    }
+
+}
+
+
+/*Media Query: Celular*/
+@media (max-width: 750px){
+    .container:not(header){
+        grid-template-columns: 1fr; /*Para movil se utiliza una sola columna*/
+    }
+
+    /*main*/
+    .imagen-historia{
+        order: 1;
+    }
+    .historia{
+        order: 2;
+    }
+    .imagen-objetivos{
+        order: 3;
+    }
+    .objetivos{
+        order: 4;
+    }
+
+    .titulo{
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        justify-content: center;
+    }
+    #nuestrahistoria-titulo-2, #objetivos-titulo-2{
+        margin-top: 0;
+    }
+
+    .contenido-texto p{
+        font-size: 1em;
+    }    
+    
+    /*ahijados*/
+    #contenido-ahijados{
+        grid-template-columns: repeat(2, 1fr); /*Seccion ahijados en dos columnas*/
+    }
+
+}
+
+
+
+
+
+
+
+
+

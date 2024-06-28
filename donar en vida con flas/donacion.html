@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donar en vida-Donación</title>
+    <!--Consigan: uso de favicon-->
+    <link rel="icon" href="static/img/donar-en-vida-isotipo.png">
+    <!--css-->
+    <link rel="stylesheet" href="static/css/donacion.css">
+    <!--Bootstrap iconos-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <!--padre-->
+    <header  class="container">
+        <div class="header-logo"> <img src="static/img/donar-en-vida-marca.png" alt="logo"></div>
+        <nav>
+            <label class="nav-barra" for="nav-barra"><i class="bi bi-list"></i></label>
+            <input class="menu-hamburguesa" type="checkbox" id="nav-barra">
+
+            <ul class="nav-menu">
+                <li class="inicio"><a href="index.html">Inicio</a></li>
+                <li class="nosotros"><a href="nosotros.html">Nosotros</a>
+                    <ul>
+                        <li><a href="nosotros.html#nuestra-historia">Nuestra Historia</a></li>
+                        <li><a href="nosotros.html#nuestros-objetivos">Nuestros Objetivos</a></li>
+                        <li><a href="nosotros.html#ahijados">Nuestros Ahijados</a></li>
+                    </ul>
+                </li>
+                <li class="donacion"><a href="donacion.html">Donacion</a>
+                    <ul>
+                        <li><a href="donacion.html#que-es-la-donacion">¿Qué es la donación de médula ósea?</a></li>
+                        <li><a href="donacion.html#como-ser-donante">¿Cómo ser donante?</a></li>
+                        <li><a href="donacion.html#como-es-la-donacion">¿Cómo es la donacion?</a></li>
+                        <li><a href="donacion.html#requisitos">Requisitos para ser donante</a></li>
+                        <li><a href="donacion.html#inscripcion-donante">Inscribirse como donante de médula ósea</a></li>
+                    </ul>
+                </li>
+                <li class="colaboracion"><a href="colaboracion.html">Colaboración</a>
+                    <ul>
+                        <li><a href="colaboracion.html#colaborar">Quiero Colaborar</a></li>
+                    </ul>
+                </li>
+                <li class="contacto"><a href="contacto.html">Contacto</a>
+                    <ul>
+                        <li><a href="contacto.html#enviar-consulta">Envianos tu consulta</a></li>
+                        <li><a href="contacto.html#donde-estamos">¿Dónde estamos?</a></li>
+                    </ul>
+            </li>
+            <li class="formulario_inscripcion"><a href="formulario.html">Formularios</a>
+            </ul>
+        </nav>
+    </header>
+    <!--padre-->
+    <section class="hero container" id="que-es-la-donacion">
+         <!--banner de inicio-->
+         <div class="banner-imagen"  >
+            <img src="static/img/banner-de-inicio.png" alt="imagen-quiero-ser-donante-voluntario">
+
+        </div>
+        <!--donación-->
+        <div class="banner-texto">
+            <h1>¿QUE ES LA DONACION DE MEDULA OSEA?</h1>
+            <p>La médula ósea es el tejido suave y graso que se encuentra dentro de sus huesos. La médula ósea contiene células madre, que son células inmaduras que se convierten en células sanguíneas.
+            </p>
+
+            <p>Las personas que padecen cánceres potencialmente mortales, como la leucemia, el linfoma y el mieloma, pueden ser tratadas con un trasplante de médula ósea o en ocasiones, trasplante de células madre. Para este tipo de tratamiento, la médula ósea se obtiene de un donante. En ocasiones, las personas pueden donar su propia médula ósea para usarla en el futuro.
+            </p>
+        </div>
+    </section>
+    <!--padre-->
+    <main class="container">
+        <!--imagen-->
+        <div class=" contenido-imagen donacion-imagen" id="como-ser-donante">
+            <img src="static/img/imagen-1.png" alt="imagen">
+        </div>
+        <!--donante-->
+        <div class="contenido-texto donacion-texto">
+            <h3>¿COMO SER DONANTE?</h3>
+            <p>Cada año cientos de personas necesitan un donante de médula ósea para recuperar su salud y no cuentan con un donante compatible en su familia por lo que deben recurrir a un donante no emparentado. Por eso existen en el mundo los Registros de Donantes. 
+            </p>
+
+            <p>En Argentina, para ser donante de médula ósea hay que donar sangre e inscribirse en el Registro Nacional de Donantes Voluntarios de CPH.
+            </p>
+        </div>
+        <!--extracción-->
+        <div class="contenido-texto extraccion">
+            <h3>¿COMO ES LA DONACION?</h3>
+            <p>Existen 2 formas de extracción de células y se realiza de acuerdo a la patología del receptor. Puede ser:
+            </p>
+            <ul>
+                <li><i class="bi bi-droplet-fill"></i>Por sangre periférica: es una práctica ambulatoria en la que se aplican vacunas para liberar células madres al torrente sanguíneo y así poder recolectarlas mediante una técnica especial.
+                </li>
+                <li><i class="bi bi-droplet-fill"></i>Por médula ósea: se realiza bajo anestesia general mediante la punción del hueso de la cadera.
+                </li>
+            </ul>
+            <p>Las células extraídas son enviadas al lugar donde se encuentre el paciente, para realizar el trasplante. Ni el donante ni el receptor deben viajar.
+            </p>
+        </div>
+        <!--Video--> <!--Consigna utilizar iframes-->
+        <div class="contenido-video extraccion-video" id="como-es-la-donacion">
+            <iframe  src="https://www.youtube.com/embed/EQUq1kjPwLg" title="Donación de médula ósea por aféresis"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <!--contenido-imagen-->
+        <div class="contenido-imagen requisito-imagen" id="requisitos">
+            <img src="static/img/imagen-2.png" alt="imagen">
+        </div>
+        <!--requisitos-->
+        <div class="contenido-texto requisito-texto">
+            <h3 class="contenido-titulo1">REQUISITOS PARA</h3>
+            <h3 class="contenido-titulo2">SER DONANTE</h3>
+            <ul class="requisitos">
+                <li><i class="bi bi-droplet-fill"></i>Tener entre 18 y 55 años de edad y buen estado de salud
+                </li>
+                <li><i class="bi bi-droplet-fill"></i>Contar con un peso mínimo de 50 kg.
+                </li>
+                <li><i class="bi bi-droplet-fill"></i>Estar en condiciones de donar sangre.
+                </li>
+                <li><i class="bi bi-droplet-fill"></i>No tener antecedentes de enfermedades cardíacas, hepáticas o infectocontagiosas.
+                </li>
+            </ul>
+            <p class="texto-1">Se dona sangre sin necesidad de estar en ayunas, se toma una muestra y se la analiza genéticamente. Esos datos ingresarán a la base de datos y quedarán a disposición para ser comparados con los de los pacientes que necesitan un trasplante.</p>
+
+            <p class="texto-2">“Salvá una vida con una simple donación de sangre. No hay riesgos ni efectos secundarios y es 100% simple.”</p>
+        </div>
+        <!--inscripción-->
+        <div class="contenido-texto inscripcion" id="inscripcion-donante">
+            <h3>INSCRIBITE COMO DONANTE DE MEDULA OSEA</h3>
+            <p>Para inscribirse como donante es necesario donar sangre en alguno de los centros de donación habilitados en los Servicios de Hemoterapia de los Hospitales y Bancos de Sangre de todo el país. También se puede realizar en colectas externas que cada mes se organizan para facilitar la donación de sangre e inscripción de donantes de CPH.</p>
+            
+        </div>
+        <div class="contenido-texto inscripcion-texto">
+            <p class="inscripcion-texto-1">Para inscribirse como donante es necesario donar sangre en alguno de los centros de donación habilitados en los Servicios de Hemoterapia de los Hospitales y Bancos de Sangre de todo el país. También se puede realizar en colectas externas que cada mes se organizan para facilitar la donación de sangre e inscripción de donantes de CPH.</p>
+
+            <ul class="inscrip-lista">
+                <li><span>EN LÍNEA:</span> Visita el sitio web del <a href="https://sintra.incucai.gov.ar/cph/" target="_blank">INCUCAI</a> y busca la sección de registro de donantes de médula ósea. Allí encontrarás instrucciones sobre cómo completar el formulario de inscripción en línea.</li>
+                <li><span>PRESENCIALMENTE:</span> Puedes registrarte personalmente en cualquier hospital público, centro de salud, o institución habilitada para la inscripción en el Registro Nacional de Datos Genéticos. <a href="https://www.argentina.gob.ar/salud/mapamedula" target="_blank">Ver el mapa de centros de donación habilitados en todo el país.</a></li>
+            </ul>
+
+            <p>Inscribirse como donante es un compromiso a largo plazo porque una persona registrada puede ser convocada a donar hasta el día que cumple los 60 años.</p>
+        </div>
+        <div class="contenido-imagen inscripcion-imagen">
+            <img src="static/img/imagen-4.png" alt="">
+        </div>
+      
+    </main>
+    <!--padre-->
+    <footer class="container">
+        <div class="redes-sociales">
+            <ul class="rrss">
+                <li><a href="https://www.facebook.com/www.Donar/" target="_blank" >Facebook</a></li>
+                <li><a href="https://www.instagram.com/donarenvida16/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.youtube.com/" target="_blank">Youtube</a></li>
+                <li><a href="https://www.twitter.com/donarenvida16" target="_blank">X</a></li>
+                
+            </ul>
+
+            <ul class="rrss-iconos">
+                <li><a href="https://www.facebook.com/www.Donar/"  target="_blank"><i class="bi bi-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/donarenvida16/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/" target="_blank"><i class="bi bi-youtube"></i></a></li>
+                <li><a href="https://www.twitter.com/donarenvida16" target="_blank"><i class="bi bi-twitter-x"></i></a></li>
+                
+            </ul>
+            <p>© 2024 Donar en Vida. Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-logo">
+            <img src="static/img/donar-en-vida-marca.png" alt="logo">
+        </div>
+    </footer>
+</body>
+</html>

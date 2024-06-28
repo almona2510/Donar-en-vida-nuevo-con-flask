@@ -1,0 +1,133 @@
+/* Estilos para todo el proyecto */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500; 600; 700&display=swap');
+ *  {
+        font-family: 'Quicksand', sans-serif;
+        margin: 0;
+    }
+
+    body {
+        background-color: #1d1a39;
+        color:white;
+    }
+
+    /* Proyecto CRUD - TPO Final Codo a Codo FullStack Python 88*/ .contenedor-centrado { 
+        display:flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .logo-centrado {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+        margin-top: 120px;
+    }
+
+
+    p {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #f9f9f9;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+
+        /* Proyecto CRUD - TPO Final Codo a Codo FullStack Python 89*/ color: #ffd200; 
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 15px;
+        background-color: #390e8c;
+        border: 1px solid lightslategray;
+        border-radius: 5px;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        margin-left: -5%;
+    }
+
+
+
+    table {
+        max-width: 35%;
+        height: 100%;
+        margin-top: 150px;
+        margin-left:35%;
+        padding: 20px;
+        background-color: #390e8c;
+        border: 1px solid lightslategray;
+        border-radius: 5px;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
+    }
+
+    label {
+        display: block;
+       
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 5px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        padding: 10px;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+
+        /* Proyecto CRUD - TPO Final Codo a Codo FullStack Python 90 */
+    }
+
+    button {
+        padding: 8px;
+        margin:4px;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .formu {
+        padding: 8px;
+        margin:4px;
+        background-color: #fdab13;
+        color: #1d1a39;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 85%;
+        font-weight: 800;
+    }
+
+    .formu:hover {
+        background-color: #1d1a39;
+        color:#fdab13
+    }
+
+    .derechos_reservados{
+        color: black;
+        background-color:  #C21518;
+    }

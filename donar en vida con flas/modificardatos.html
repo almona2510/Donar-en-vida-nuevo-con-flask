@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donar en vida</title>
+    <!--Consigan: uso de favicon-->
+    <link rel="icon" href="static/img/donar-en-vida-isotipo.png">
+    <!--css-->
+    <link rel="stylesheet" href="static/css/inscripcion.css">
+    <link rel="stylesheet" href="static/css/modiciardatos.css">
+    <!--Bootstrap iconos-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <!--padre-->
+    <header class="container">
+        <div class="header-logo"> <img src="static/img/donar-en-vida-marca.png" alt="logo"></div>
+        <nav>
+            <label class="nav-barra" for="nav-barra"><i class="bi bi-list"></i></label>
+            <input class="menu-hamburguesa" type="checkbox" id="nav-barra">
+
+            <ul class="nav-menu">
+                <li class="inicio"><a href="index.html">Inicio</a></li>
+                <li class="nosotros"><a href="nosotros.html">Nosotros</a>
+                    <ul>
+                        <li><a href="nosotros.html#nuestra-historia">Nuestra Historia</a></li>
+                        <li><a href="nosotros.html#nuestros-objetivos">Nuestros Objetivos</a></li>
+                        <li><a href="nosotros.html#ahijados">Nuestros Ahijados</a></li>
+                    </ul>
+                </li>
+                <li class="donacion"><a href="donacion.html">Donacion</a>
+                    <ul>
+                        <li><a href="donacion.html#que-es-la-donacion">¿Qué es la donación de médula ósea?</a></li>
+                        <li><a href="donacion.html#como-ser-donante">¿Cómo ser donante?</a></li>
+                        <li><a href="donacion.html#como-es-la-donacion">¿Cómo es la donacion?</a></li>
+                        <li><a href="donacion.html#requisitos">Requisitos para ser donante</a></li>
+                        <li><a href="donacion.html#inscripcion-donante">Inscribirse como donante de médula ósea</a></li>
+                    </ul>
+                </li>
+                <li class="colaboracion"><a href="colaboracion.html">Colaboración</a>
+                    <ul>
+                        <li><a href="colaboracion.html#colaborar">Quiero Colaborar</a></li>
+                    </ul>
+                </li>
+                <li class="contacto"><a href="contacto.html">Contacto</a>
+                    <ul>
+                        <li><a href="contacto.html#enviar-consulta">Envianos tu consulta</a></li>
+                        <li><a href="contacto.html#donde-estamos">¿Dónde estamos?</a></li>
+                    </ul>
+                </li>
+                <li class="formulario_inscripcion"><a href="formulario.html">Formulario</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Modificar Mis Datos</h1><br>
+    <!-- Contenedor principal que será controlado por JavaScript. Este
+    contenedor tendrá dos formularios. -->
+    <div id="app">
+        <!-- Primer formulario: Selector de producto. LLama a la función
+    obtenerProducto cuando se envíe el formulario -->
+        <form class="formulario_modificar_datos" id="form-obtener-producto">
+            <label for="dni">Dni:</label>
+            <input type="number" id="dni" required><br>
+            <button type="submit">Modificar Mis Datos</button> <a class="boton_formulario" href="formulario.html">Formulario</a>
+        </form>
+        <!-- Segundo formulario: se muestra solo si mostrarDatosProducto
+    es verdadero. Llama a la función guardarCambios -->
+        <div id="datos-producto" style="display: none;">
+            <h2>Mis datos</h2>
+            <form class="formulario_modificar_datos" id="form-guardar-cambios">
+                <label for="descripcionModificar">Domicilio:</label>
+                <input type="text" id="descripcionModificar" name="domicilio" required><br>
+
+                <label for="cantidadModificar">Edad:</label>
+                <input type="number" id="cantidadModificar"  name="edad" required><br>
+                <label for="precioModificar">Telefono:</label>
+                <input type="text" id="precioModificar" name="telefono" required><br>
+                <!-- Input para nueva imagen -->
+                <label for="nuevaImagen">Nueva Imagen:</label>
+                <input type="file" id="nuevaImagen"><br>
+                <br>
+                <label for="proveModificar">E-mail:</label>
+                <input type="email" id="proveModificar" name="mail" required><br>
+                <label for="ingresardni">Ingrese nuevamente su Dni para confirmar los cambios</label>
+                <input type="number" id="dni">
+                <button type="submit">Guardar Cambios</button>
+                <a class="boton_formulario" href="modificaciones.html">Cancelar</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Imagen actual del producto - Debe comentarse al subirse al servidor-->
+
+    <img id="imagen-actual" style="max-width: 200px; display:none;">
+
+    <!-- Vista previa de la nueva imagen seleccionada -->
+    <img id="imagen-vista-previa" style="max-width: 200px; display: none;">
+
+    
+
+
+    <script>
+        const URL = "http://127.0.0.1:5000/"
+        // Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+        //const URL = "https://USUARIO.pythonanywhere.com/"
+        // Variables de estado para controlar la visibilidad y los datos del formulario
+        let domicilio = '';
+        let edad = '';
+        let telefono = '';
+        let mail = '';
+        let imagen_url = '';
+        let imagenSeleccionada = null;
+        let imagenUrlTemp = null;
+        let mostrarDatosProducto = false;
+
+        document.getElementById('form-obtener-producto').addEventListener('submit', obtenerProducto);
+
+        document.getElementById('form-guardar-cambios').addEventListener('submit', guardarCambios);
+
+        document.getElementById('nuevaImagen').addEventListener('change',seleccionarImagen);
+
+
+        // Se ejecuta cuando se envía el formulario de consulta. Realiza una solicitud GET a la API y obtiene los datos del donante correspondiente al dni ingresado.
+        function obtenerProducto(event) {
+            event.preventDefault();
+            dni = document.getElementById('dni').value;
+            fetch(URL + 'donantes/' + dni)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    } else {
+                        throw new Error('Error al obtener los datos del donante.')
+
+                    }
+                })
+                .then(data => {
+                    domicilio = data.domicilio;
+                    edad = data.edad;
+                    telefono = data.telefono;
+                    imagen_url = data.imagen_url;
+                    mail = data.mail;
+                    mostrarDatosProducto = true; //Activa la vista del segundo formulario 
+                    mostrarFormulario();
+                })
+                .catch(error => {
+                    alert('Dni no encontrado.');
+                });
+        }
+        // Muestra el formulario con los datos del producto
+        function mostrarFormulario() {
+            if (mostrarDatosProducto) {
+                document.getElementById('descripcionModificar').value = domicilio;
+
+                document.getElementById('cantidadModificar').value = edad;
+
+                document.getElementById('precioModificar').value = telefono;
+
+                document.getElementById('proveModificar').value = mail;
+
+                const imagenActual = document.getElementById('imagen-actual');
+
+                if (imagen_url && !imagenSeleccionada) { // Verifica si imagen_url no está vacía y no se ha seleccionado una imagen
+
+                    imagenActual.src = 'static/img/' + imagen_url;
+
+                    //Al subir al servidor, deberá utilizarse la siguiente ruta.USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+
+                    //imagenActual.src = 'https://www.pythonanywhere.com/user/USUARIO/files/home/USUARIO/mysite/static / imagenes / ' + imagen_url;
+
+                    imagenActual.style.display = 'block'; // Muestra la imagen actual
+
+                } else {
+                    imagenActual.style.display = 'none'; // Oculta la imagen si no hay URL
+                }
+                document.getElementById('datos-producto').style.display = 'block';
+
+            } else {
+                document.getElementById('datos-producto').style.display = 'none';
+            }
+        }
+        // Se activa cuando el usuario selecciona una imagen para cargar.
+        function seleccionarImagen(event) {
+            const file = event.target.files[0];
+            imagenSeleccionada = file;
+            imagenUrlTemp = URL.createObjectURL(file); // Crea una URL temporal para la vista previa
+
+            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
+
+            imagenVistaPrevia.src = imagenUrlTemp;
+            imagenVistaPrevia.style.display = 'block';
+        }
+        // Se usa para enviar los datos modificados del producto al servidor.
+        function guardarCambios(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            formData.append('dni', dni);
+            formData.append('domicilio', document.getElementById('descripcionModificar').value);
+            formData.append('edad', document.getElementById('cantidadModificar').value);
+            formData.append('mail', document.getElementById('proveModificar').value);
+
+            formData.append('telefono',document.getElementById('precioModificar').value);
+
+            // Si se ha seleccionado una imagen nueva, la añade al formData.
+ 
+            if(imagenSeleccionada) {
+                formData.append('imagen', imagenSeleccionada,imagenSeleccionada.name);
+
+            }
+            fetch(URL + 'donantes/' + dni, {
+                method: 'PUT',
+                body: formData,
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    } else {
+                        throw new Error('Error al guardar los datos.')
+
+}
+                })
+                .then(data => {
+                    alert('Datos actualizado correctamente.');
+                    limpiarFormulario();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al actualizar los datos.');
+                });
+        }
+        // Restablece todas las variables relacionadas con el formulario a sus valores iniciales, lo que efectivamente "limpia" el formulario.
+        function limpiarFormulario() {
+            document.getElementById('dni').value = '';
+            document.getElementById('descripcionModificar').value = '';
+            document.getElementById('cantidadModificar').value = '';
+            document.getElementById('precioModificar').value = '';
+            document.getElementById('proveModificar').value = '';
+            document.getElementById('nuevaImagen').value = '';
+
+            const imagenActual = document.getElementById('imagen-actual');
+
+            imagenActual.style.display = 'none';
+            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
+
+            imagenVistaPrevia.style.display = 'none';
+            dni = '';
+            domicilio= '';
+            edad = '';
+            telefono = '';
+            mail = '';
+            imagen_url = '';
+            imagenSeleccionada = null;
+            imagenUrlTemp = null;
+            mostrarDatosProducto = false;
+            document.getElementById('datos-producto').style.display ='none';
+        }
+    </script>
+
+    <!--padre-->
+    <footer class="container">
+        <div class="redes-sociales">
+            <ul class="rrss">
+                <li><a href="https://www.facebook.com/www.Donar/" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/donarenvida16/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.youtube.com/" target="_blank">Youtube</a></li>
+                <li><a href="https://www.twitter.com/donarenvida16" target="_blank">X</a></li>
+
+            </ul>
+
+            <ul class="rrss-iconos">
+                <li><a href="https://www.facebook.com/www.Donar/" target="_blank"><i class="bi bi-facebook"></i></a>
+                </li>
+                <li><a href="https://www.instagram.com/donarenvida16/" target="_blank"><i
+                            class="bi bi-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/" target="_blank"><i class="bi bi-youtube"></i></a>
+                </li>
+                <li><a href="https://www.twitter.com/donarenvida16" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                </li>
+
+            </ul>
+            <p class="derechos_reservados">© 2024 Donar en Vida. Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-logo">
+            <img src="static/img/donar-en-vida-marca.png" alt="logo">
+        </div>
+        </footer>
+</body>
+
+</html>

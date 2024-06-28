@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donar en vida</title>
+    <!--Consigan: uso de favicon-->
+    <link rel="icon" href="static/img/donar-en-vida-isotipo.png">
+    <!--css-->
+    <link rel="stylesheet" href="static/css/inscripcion.css">
+    
+    
+    <!--Bootstrap iconos-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <!--padre-->
+    <header  class="container">
+        <div class="header-logo"> <img src="static/img/donar-en-vida-marca.png" alt="logo"></div>
+        <nav>
+            <label class="nav-barra" for="nav-barra"><i class="bi bi-list"></i></label>
+            <input class="menu-hamburguesa" type="checkbox" id="nav-barra">
+
+            <ul class="nav-menu">
+                <li class="inicio"><a href="index.html">Inicio</a></li>
+                <li class="nosotros"><a href="nosotros.html">Nosotros</a>
+                    <ul>
+                        <li><a href="nosotros.html#nuestra-historia">Nuestra Historia</a></li>
+                        <li><a href="nosotros.html#nuestros-objetivos">Nuestros Objetivos</a></li>
+                        <li><a href="nosotros.html#ahijados">Nuestros Ahijados</a></li>
+                    </ul>
+                </li>
+                <li class="donacion"><a href="donacion.html">Donacion</a>
+                    <ul>
+                        <li><a href="donacion.html#que-es-la-donacion">¿Qué es la donación de médula ósea?</a></li>
+                        <li><a href="donacion.html#como-ser-donante">¿Cómo ser donante?</a></li>
+                        <li><a href="donacion.html#como-es-la-donacion">¿Cómo es la donacion?</a></li>
+                        <li><a href="donacion.html#requisitos">Requisitos para ser donante</a></li>
+                        <li><a href="donacion.html#inscripcion-donante">Inscribirse como donante de médula ósea</a></li>
+                    </ul>
+                </li>
+                <li class="colaboracion"><a href="colaboracion.html">Colaboración</a>
+                    <ul>
+                        <li><a href="colaboracion.html#colaborar">Quiero Colaborar</a></li>
+                    </ul>
+                </li>
+                <li class="contacto"><a href="contacto.html">Contacto</a>
+                    <ul>
+                        <li><a href="contacto.html#enviar-consulta">Envianos tu consulta</a></li>
+                        <li><a href="contacto.html#donde-estamos">¿Dónde estamos?</a></li>
+                    </ul>
+            </li>
+            <li class="formulario_inscripcion"><a href="formulario.html">Formularios</a>
+            </li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Formulario para inscribirse como donante</h1>
+    <div id="formulario_inscripcion">
+    <form id="formulario" enctype="multipart/form-data" method="post" >
+    
+        <label for="nombres_donante">Ingrese sus nombres:</label>
+        <input type="text" id="nombres_donante" name="nombres_donante"" required><br>
+        <label for="apellido_donante">Ingrese su apellido:</label>
+        <input type="text" id="apellido_donante" name="apellido_donante" required><br>
+        <label for="domicilio_donante">Ingrese su domicilio</label>
+        <input type="text" id="domicilio_donante" name="domicilio_donante" required><br>
+        <label for="edad_donante">Ingrese su edad:</label>
+        <input type="number" id="edad_donante" name="edad_donante" required><br>
+        <label for="imagen_donante">Ingrese una foto 4x4</label>
+        <input type="file" id="imagen_donante" name="imagen_donante"><br>
+        <label for="grupo_sanguineo">Ingrese su grupo y factor sanguineo:</label>
+        <input type="text" id="grupo_sanguineo" name="grupo_sanguineo" required><br>
+        <label for="telefono_donante">Ingrese un numero de telefono:</label>
+        <input type="text" id="telefono_donante" name="telefono_donante" required><br>
+        <label for="mail_donante">Ingrese un e-mail:</label>
+        <input type="e-mail" id="mail_donante" name="mail_donante" required><br>
+        <label for="dni_donante" >Ingrese su dni:</label>
+        <input type="number" id="dni_donante" name="dni_donante" required><br>
+        <button type="submit">INSCRIBIRME</button>    
+    </form>
+        </div>
+  
+        <script>
+            const URL = "http://127.0.0.1:5000/"
+//Al subir al servidor, deberá utilizarse la siguiente ruta.USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+//const URL = "https://USUARIO.pythonanywhere.com/"
+
+// Capturamos el evento de envío del formulario
+document.getElementById('formulario').addEventListener('submit',
+    function (event) {
+
+        event.preventDefault(); // Evitamos que se envie el form
+        var formData = new FormData(this);
+        // Realizamos la solicitud POST al servidor
+        fetch(URL + 'donantes', {
+            method: 'POST',
+            body: formData // Aquí enviamos formData. Dado que formData puede contener archivos, no se utiliza JSON.
+
+        })
+            //Después de realizar la solicitud POST, se utiliza el método then() para manejar la respuesta  del servidor.
+            .then(function (response) {
+                if (response.ok) {
+                    //Si la respuesta es exitosa, convierte los datos de la respuesta a formato JSON.
+                    return response.json();
+                } else {
+                    // Si hubo un error, lanzar explícitamente una excepción
+                   // para ser "catcheada" más adelante
+                    throw new Error('Error al agregar los datos.');
+                }
+            })
+            //Respuesta OK, muestra una alerta informando que el producto se agregó correctamente y limpia los campos del formulario para que puedan ser utilizados para un nuevo producto.
+
+            .then(function (data) {
+                alert('Donante agregado correctamente.');
+            })
+
+            // En caso de error, mostramos una alerta con un mensaje de error.
+
+            .catch(function (error) {
+                alert('Error al agregar los datos.');
+            })
+            // Limpiar el formulario en ambos casos (éxito o error)
+            .finally(function () {
+                document.getElementById('nombres_donante').value = "";
+                document.getElementById('apellido_donante').value = "";
+                document.getElementById('domicilio_donante').value = "";
+                document.getElementById('edad_donante').value = "";
+                document.getElementById('imagen_donante').value = "";
+                document.getElementById('telefono_donante').value = "";
+                document.getElementById('mail_donante').value = "";
+                document.getElementById('dni_donante').value = "";
+
+
+
+            });
+    })
+        </script>
+  
+    <!--padre-->
+    <footer class="container">
+        <div class="redes-sociales">
+            <ul class="rrss">
+                <li><a href="https://www.facebook.com/www.Donar/" target="_blank" >Facebook</a></li>
+                <li><a href="https://www.instagram.com/donarenvida16/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.youtube.com/" target="_blank">Youtube</a></li>
+                <li><a href="https://www.twitter.com/donarenvida16" target="_blank">X</a></li>
+                
+            </ul>
+
+            <ul class="rrss-iconos">
+                <li><a href="https://www.facebook.com/www.Donar/" target="_blank" ><i class="bi bi-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/donarenvida16/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/" target="_blank"><i class="bi bi-youtube"></i></a></li>
+                <li><a href="https://www.twitter.com/donarenvida16" target="_blank"><i class="bi bi-twitter-x"></i></a></li>
+                
+            </ul>
+            <p class="derechos_reservados">© 2024 Donar en Vida. Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-logo">
+            <img src="static/img/donar-en-vida-marca.png" alt="logo">
+        </div>
+    </footer>
+</body>
+</html>
