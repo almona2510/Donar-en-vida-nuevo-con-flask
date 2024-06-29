@@ -114,9 +114,9 @@ class Donantes:
 # Cuerpo del programa
 #--------------------------------------------------------------------
 # Crear una instancia de la clase Catalogo
-datos_donante = Donantes(host='localhost', user='root', password='', database='miapp1')
+datos_donante = Donantes(host='almona25.mysql.pythonanywhere-services.com', user='almona25', password='', database='almona25$miapp')
 # Carpeta para guardar las imagenes
-ruta_destino = './static/img/'
+ruta_destino = '/home/almona25/mysite/static/img/'
 
 
 @app.route("/donantes", methods=["GET"])
